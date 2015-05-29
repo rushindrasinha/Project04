@@ -15,7 +15,10 @@
         <!-- LOCAL INFORMATION -->
         <div class="col-sm-12 text-center">
             <div class="well">
-                <h3><span class="fa fa-user"></span>Welcome <b><%= user.local.email %></b>, Here are your Restaurants </h3>
+                <h3><span class="fa fa-user"></span>Welcome <b><%= user.local.email %></b>, Here's your info</h3>
+                  <h5>Address: <%= user.local.street1 %>,
+                    <br><%= user.local.city %>, <%= user.local.zip %>, <%= user.local.state %>
+                    <br> Phone Number: <%= user.local.phone %></h5>
 
                     <div class="ui stackable three column grid">
 <!-- Restaurant 1 Card Starts -->
