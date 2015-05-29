@@ -14,7 +14,14 @@ $(document).ready(function(){
 			.modal('show');
 	});
 
-});
+	// $('.menu').on('click', function(e){
+	// 	e.preventDefault();
+	// 	$('#menu')
+	// 		.modal('setting', 'transition', 'vertical flip')
+	// 		.modal('show');
+	// });
+
+
 
 // McDonalds
 $.ajax({
@@ -31,7 +38,7 @@ $.ajax({
 
     result.objects[0].menus.forEach(function(menu){
       menu.sections.forEach(function(section){
-        console.log(section);
+        //console.log(section);
       });
     })
   }
@@ -50,13 +57,21 @@ $.ajax({
     $('.1restaurantsNumber').append(result.objects[0].phone)
     $('.1restaurants').append("<br>" + result.objects[0].locality)
     $('.1restaurants').append("<br>" + result.objects[0].postal_code)
-    result.objects[0].menus.forEach(function(menu){
-      menu.sections.forEach(function(section){
-      //  console.log(section);
-      });
-    })
-  }
-});
+		$('.menu').on('click', function(e){
+			e.preventDefault();
+			$('#menu').modal('setting', 'transition', 'vertical flip').modal('show');
+		});
+  	result.objects[0].menus.forEach(function(menu){
+    	menu.sections.forEach(function(section){
+				$('#menu .content .grid').append('<div class="row"><h2 style="color:#2962FF">'+section.section_name+'</h2></div>');
+     		section.subsections[0].contents.forEach(function(item){
+					var price = item.price ? item.price : "Price not given";
+					$('#menu .content .grid .row').append('<div class="three wide column"><h3 style="color:#C62828">'+item.name+'</h3><p><i style="color:#616161">'+item.description+'</i></p><p><b>$'+price+'</b></p></div>');
+				})
+    	});
+  	});
+	}
+}); //b lounge ajax
 
 // Pinches
 $.ajax({
@@ -72,3 +87,7 @@ $.ajax({
     $('.2restaurants').append("<br>" + result.objects[0].postal_code)
   }
 });
+
+
+
+}); //jquery

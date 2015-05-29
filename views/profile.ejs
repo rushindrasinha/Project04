@@ -5,7 +5,7 @@
 <div class="ui stackable page grid centered">
 
     <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span><i class="user icon"></i> <%= user.local.email %>'s Page</h1>
+        <h1><span class="fa fa-anchor"></span><i class="user icon"></i> <%= user.local.firstname %>'s Page</h1>
         <a href="/profile" class="ui blue button"><i class="settings icon"></i>Settings</a>
         <a href="/logout" class="ui red button"><i class="sign out icon"></i>Logout</a>
     </div>
@@ -15,7 +15,7 @@
         <!-- LOCAL INFORMATION -->
         <div class="col-sm-12 text-center">
             <div class="well">
-                <h3><span class="fa fa-user"></span>Welcome <b><%= user.local.email %></b>, Here's your info</h3>
+                <h3><span class="fa fa-user"></span>Welcome <b><%= user.local.firstname %></b>, Here's your info</h3>
                   <h5>Address: <%= user.local.street1 %>,
                     <br><%= user.local.city %>, <%= user.local.zip %>, <%= user.local.state %>
                     <br> Phone Number: <%= user.local.phone %></h5>
@@ -36,7 +36,7 @@
                         </div>
                       </div>
                       <div class="extra content">
-                        <a>
+                        <a class="menu">
                           <i class="newspaper icon"></i>
                           Menu
                         </a>
@@ -81,7 +81,7 @@
                         </div>
                       </div>
                       <div class="extra content">
-                        <a>
+                        <a class="menu">
                           <i class="newspaper icon"></i>
                           Menu
                         </a>
@@ -123,7 +123,7 @@
                         </div>
                       </div>
                       <div class="extra content">
-                        <a>
+                        <a class="menu">
                           <i class="newspaper icon"></i>
                           Menu
                         </a>
@@ -156,6 +156,16 @@
     </div>
 
 </div><!-- .container -->
+
+
+<div id="menu" class="ui modal">
+  <div class="content">
+    <div class="ui grid">
+
+    </div>
+  </div>
+</div>
+
 
 <% include ./partials/footer %>
 
