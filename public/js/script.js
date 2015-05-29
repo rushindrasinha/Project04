@@ -31,7 +31,7 @@ $.ajax({
 
     result.objects[0].menus.forEach(function(menu){
       menu.sections.forEach(function(section){
-        //console.log(section);
+        console.log(section);
       });
     })
   }
@@ -52,7 +52,7 @@ $.ajax({
     $('.1restaurants').append("<br>" + result.objects[0].postal_code)
     result.objects[0].menus.forEach(function(menu){
       menu.sections.forEach(function(section){
-        console.log(section);
+      //  console.log(section);
       });
     })
   }
