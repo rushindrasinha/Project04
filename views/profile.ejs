@@ -2,11 +2,12 @@
 
 <% include ./partials/header %>
 
-<div class="container">
+<div class="ui stackable page grid centered">
 
     <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+        <h1><span class="fa fa-anchor"></span><i class="user icon"></i> <%= user.local.email %>'s Page</h1>
+        <a href="/profile" class="ui blue button"><i class="settings icon"></i>Settings</a>
+        <a href="/logout" class="ui red button"><i class="sign out icon"></i>Logout</a>
     </div>
 
     <div class="row">
@@ -14,12 +15,99 @@
         <!-- LOCAL INFORMATION -->
         <div class="col-sm-12 text-center">
             <div class="well">
-                <h3><span class="fa fa-user"></span> Local</h3>
+                <h3><span class="fa fa-user"></span>Welcome <b><%= user.local.email %></b>, Here are your Restaurants </h3>
 
-                    <p>
-                        <strong>email</strong>: <%= user.local.email %><br>
-                    </p>
+                    <div class="ui stackable three column grid">
+<!-- Restaurant 1 Card Starts -->
+                  <div class="column">
+                    <div class="ui card">
+                      <div class="image">
+                        <img src="http://www.mcdonalds.co.uk/content/dam/McDonaldsUK/Promotions/Facebook-Share-Image.jpg">
+                      </div>
+                      <div class="content">
+                        <a id="restaurantsName" class="header restaurantsName"><b>Restaurant Name : </b></a>
+                        <div class="meta">
+                          <span id="restaurantsNumber" class="date restaurantsNumber"><b>Phone Number : </b></span>
+                        </div>
+                        <div id="restaurants" class="description restaurants"><b>Address : </b>
+                        </div>
+                      </div>
+                      <div class="extra content">
+                        <a>
+                          <i class="newspaper icon"></i>
+                          Menu
+                        </a>
+                      </div>
+                      <div class="extra content">
+                        <a>
+                          <i class="edit icon"></i>
+                          Edit Selected Order
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+<!-- Restaurant 1 Card Ends -->
 
+<!-- Restaurant 2 Card Starts -->
+<div class="column">
+                    <div class="ui card">
+                      <div class="image">
+                        <img src="http://veggiesetgo.com/wp-content/uploads/2014/09/pinches-tacos24.png">
+                      </div>
+                      <div class="content">
+                        <a id="2restaurantsName" class="header"><b>Restaurant Name : </b></a>
+                        <div class="meta">
+                          <span id="2restaurantsNumber" class="date"><b>Phone Number : </b></span>
+                        </div>
+                        <div id="2restaurants" class="description"><b>Address : </b>
+                        </div>
+                      </div>
+                      <div class="extra content">
+                        <a>
+                          <i class="newspaper icon"></i>
+                          Menu
+                        </a>
+                      </div>
+                      <div class="extra content">
+                        <a>
+                          <i class="edit icon"></i>
+                          Edit Selected Order
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+<!-- Restaurant 2 Card Ends -->
+
+<!-- Restaurant 3 Card Starts -->
+<div class="column">
+                    <div class="ui card">
+                      <div class="image">
+                        <img src="http://www.burgerlounge.com/images/kensington-locale.jpg">
+                      </div>
+                      <div class="content">
+                        <a id="1restaurantsName" class="header"><b>Restaurant Name : </b></a>
+                        <div class="meta">
+                          <span id="1restaurantsNumber" class="date"><b>Phone Number : </b></span>
+                        </div>
+                        <div id="1restaurants" class="description"><b>Address : </b>
+                        </div>
+                      </div>
+                      <div class="extra content">
+                        <a>
+                          <i class="newspaper icon"></i>
+                          Menu
+                        </a>
+                      </div>
+                      <div class="extra content">
+                        <a>
+                          <i class="edit icon"></i>
+                          Edit Selected Order
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+<!-- Restaurant 3 Card Ends -->
+  </div>
             </div>
         </div>
 
