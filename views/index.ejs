@@ -1,9 +1,8 @@
 <% include ./partials/head %>
 
-<div class="container">
+    <div class="ui grid centered">
 
-    <div class="ui page grid column centered">
-
+        <div class="ui centered row"></div>
 
             <h2 class="ui center aligned icon header">
               <i class="circular food icon"></i>
@@ -15,17 +14,65 @@
             
 
             <div class="ui huge buttons">
-              <a class="ui button" href="/login"><i class="user icon"></i> Login</a>
+              <a id="login-button" class="ui button" href="/login"><i class="user icon"></i> Log In</a>
               <div class="or"></div>
-             <a class="ui positive button" href="/signup"><i class="user icon"></i> Signup</a>
+             <a id="signup-button" class="ui positive button" href="/signup"><i class="user icon"></i> Signup</a>
             </div>
 
-            
-            
+            <div id="signup-form" class="ui modal">
+                <div class="header">
+                    Sign Up
+                </div>
+                <!-- signup FORM -->
+                <div class="content">
+                    <form action="/signup" method="post" class="ui form" >
+                        <div class="two fields">
+                            <div class="field">
+                                <label>Email</label>
+                                <input type="text" name="email" placeholder="Email Address">
+                            </div>
+                            <div class="field">
+                                <label>Password</label>
+                              <input type="password" name="password" placeholder="Password">
+                            </div>
+                            <!-- <div class="actions"> -->
+                                <button type="submit" class="ui submit button">Sign Up</button>
+                            <!-- </div> -->
+                        </div>
+                    </form>
+                </div>
+            </div><!-- signup modal -->
 
-    </div>
 
-</div><!-- .container -->
+            <div id="login-form" class="ui modal">
+                <div class="header">
+                    Log In
+                </div>
+                <!-- LOGIN FORM -->
+                <div class="content">
+                    <form action="/login" method="post" class="ui form" >
+                        <div class="two fields">
+                            <div class="field">
+                                <label>Email</label>
+                                <input type="text" name="email" placeholder="Email Address">
+                            </div>
+                            <div class="field">
+                                <label>Password</label>
+                              <input type="password" name="password" placeholder="Password">
+                            </div>
+                            <!-- <div class="actions"> -->
+                                <button type="submit" class="ui submit button">Log In</button>
+                            <!-- </div> -->
+                        </div>
+                    </form>
+                </div>
+            </div><!-- login modal -->
+
+
+           
+        </div><!-- row -->
+
+    </div><!-- grid -->
 
 <% include ./partials/footer %>
 
