@@ -46,10 +46,10 @@ $.ajax({
   success: function(result){
 //    console.log(result);
 //    console.log(result.objects[0].name)
-    $('#1restaurantsName').append(result.objects[0].name)
-    $('#1restaurantsNumber').append(result.objects[0].phone)
-    $('#1restaurants').append("<br>" + result.objects[0].locality)
-    $('#1restaurants').append("<br>" + result.objects[0].postal_code)
+    $('.1restaurantsName').append(result.objects[0].name)
+    $('.1restaurantsNumber').append(result.objects[0].phone)
+    $('.1restaurants').append("<br>" + result.objects[0].locality)
+    $('.1restaurants').append("<br>" + result.objects[0].postal_code)
     result.objects[0].menus.forEach(function(menu){
       menu.sections.forEach(function(section){
         console.log(section);
@@ -66,9 +66,9 @@ $.ajax({
   success: function(result){
 //    console.log(result);
 //    console.log(result.objects[0].name)
-    $('#2restaurantsName').append(result.objects[0].name)
-    $('#2restaurantsNumber').append(result.objects[0].phone)
-    $('#2restaurants').append("<br>" + result.objects[0].locality)
-    $('#2restaurants').append("<br>" + result.objects[0].postal_code)
+    $('.2restaurantsName').append(result.objects[0].name)
+    $('.2restaurantsNumber').append(result.objects[0].phone)
+    $('.2restaurants').append("<br>" + result.objects[0].locality)
+    $('.2restaurants').append("<br>" + result.objects[0].postal_code)
   }
 });
