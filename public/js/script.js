@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 $(document).ready(function(){
 
 	$('#login-button').on('click', function(e){
@@ -17,8 +16,6 @@ $(document).ready(function(){
 
 });
 
-=======
->>>>>>> master
 // McDonalds
 $.ajax({
   type: 'GET',
