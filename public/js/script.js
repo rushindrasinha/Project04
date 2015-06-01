@@ -12,6 +12,9 @@ $(document).ready(function(){
 		$('#signup-form')
 			.modal('setting', 'transition', 'horizontal flip')
 			.modal('show');
+
+
+
 	});
 
 	// $('.menu').on('click', function(e){
@@ -33,6 +36,7 @@ $.ajax({
 //    console.log(result.objects[0].name)
     $('.restaurantsName').append(result.objects[0].name)
     $('.restaurantsNumber').append(result.objects[0].phone)
+    $('.restaurants').append("<br>" + result.objects[0].street_address)
     $('.restaurants').append("<br>" + result.objects[0].locality)
     $('.restaurants').append("<br>" + result.objects[0].postal_code);
 
@@ -55,6 +59,7 @@ $.ajax({
 //    console.log(result.objects[0].name)
     $('.1restaurantsName').append(result.objects[0].name)
     $('.1restaurantsNumber').append(result.objects[0].phone)
+    $('.1restaurants').append("<br>" + result.objects[0].street_address)
     $('.1restaurants').append("<br>" + result.objects[0].locality)
     $('.1restaurants').append("<br>" + result.objects[0].postal_code)
 		$('.menu').on('click', function(e){
@@ -83,6 +88,7 @@ $.ajax({
 //    console.log(result.objects[0].name)
     $('.2restaurantsName').append(result.objects[0].name)
     $('.2restaurantsNumber').append(result.objects[0].phone)
+    $('.2restaurants').append("<br>" + result.objects[0].street_address)
     $('.2restaurants').append("<br>" + result.objects[0].locality)
     $('.2restaurants').append("<br>" + result.objects[0].postal_code)
   }

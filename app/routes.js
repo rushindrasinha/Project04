@@ -6,6 +6,11 @@ module.exports = function(app, passport) {
     // =====================================
     app.get('/', function(req, res) {
         res.render('index.ejs'); // load the index.ejs file
+          // if (req.user) {
+          //   res.render('profile.ejs');
+          // } else {
+          //   res.render('index.ejs');
+          // }
     });
 
     // =====================================
