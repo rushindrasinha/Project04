@@ -1,4 +1,8 @@
 // app/routes.js
+
+
+var User            = require('../app/models/user');
+
 module.exports = function(app, passport) {
 
     // =====================================
@@ -70,6 +74,22 @@ module.exports = function(app, passport) {
     app.get('/logout', function(req, res) {
         req.logout();
         res.redirect('/');
+    });
+
+
+    app.post('/addtoorder', function(req, res){
+        console.log(req.user);
+        console.log(req.user.id);
+        console.log(req.body.item_to_order.orderName);
+        // db.users.update({_id: req.user.id}, $push{orders: req.body.item_to_order.orderName});
+        User.findByIdAndUpdate(
+            {_id: req.user.id},
+            {$push: {"orders": req.body.item_to_order.orderName}},
+            {safe: true, upsert: true, new : true},
+            function(err, model) {
+                console.log(err);
+            }
+        );
     });
 };
 
