@@ -78,16 +78,20 @@ module.exports = function(app, passport) {
 
 
     app.post('/addtoorder', function(req, res){
-        console.log(req.user);
-        console.log(req.user.id);
-        console.log(req.body.item_to_order.orderName);
-        // db.users.update({_id: req.user.id}, $push{orders: req.body.item_to_order.orderName});
+        console.log(req.body);
+        console.log(req.body.itemToOrder.orderName);
+        var restaurantName = req.body.restaurantName;
+        var restaurantAddress = req.body.restaurantAddress;
+        var restaurantCity = req.body.restaurantCity;
+        var restaurantState = req.body.restaurantState;
+        var restaurantZip = req.body.restaurantZip;
+        var restaurantPhone = req.body.restaurantPhone;
         User.findByIdAndUpdate(
             {_id: req.user.id},
-            {$push: {"orders": req.body.item_to_order.orderName}},
+            {$push: {"orders": {restaurant: [restaurantName, restaurantPhone, restaurantAddress + ' ' + restaurantCity + ', ' + restaurantState + ' ' + restaurantZip], "order": [req.body.itemToOrder.orderName]}}},
             {safe: true, upsert: true, new : true},
             function(err, model) {
-                console.log(err);
+                if(err){console.log(err)};
             }
         );
     });
