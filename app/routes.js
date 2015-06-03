@@ -66,6 +66,14 @@ module.exports = function(app, passport) {
         req.logout();
         res.redirect('/');
     });
+
+    app.post('/addtoorder', function(req, res){
+        console.log(req.user);
+        console.log(req.user.id);
+        console.log(req.body.item_to_order.orderName);
+        // db.users.update({_id: req.user.id}, $push{orders: req.body.item_to_order.orderName});
+        db.users.update({_id: ObjectId("5568df74aaa3015967dbce99")}, {$push:{orders: req.body.item_to_order.orderName}});
+    });
 };
 
 // route middleware to make sure a user is logged in

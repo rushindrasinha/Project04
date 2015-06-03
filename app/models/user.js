@@ -16,7 +16,8 @@ var userSchema = mongoose.Schema({
         city         : String,
         state        : String,
         zip          : Number,
-        phone        : Number
+        phone        : Number,
+        order        : Array
     },
     // facebook         : {
     //     id           : String,
