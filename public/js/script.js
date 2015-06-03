@@ -21,20 +21,19 @@ $(document).ready(function(){
             .modal('show');
     });
 
-    var restaurants = ['6e55d8e2c73ef1966b05','db7e7c1b6cadcb8b0ca2','40a636d23ea97f4d3745'];
+    var restaurants = ['6e55d8e2c73ef1966b05','db7e7c1b6cadcb8b0ca2','40a636d23ea97f4d3745','03a922d427d0c42cc9ce'];
 
     $.each(restaurants, function(i){
         $.ajax({
             type: 'GET',
             dataType: "jsonp",
-            url: "https://api.locu.com/v1_0/venue/" + restaurants[i] + "/?api_key=b86b056f3e195b5ef802fa51fccc0e896ca44919",
+            url: "https://api.locu.com/v1_0/venue/" + restaurants[i] + "/?api_key=e24ffeac95907824f1503d2a97cb39d5c9e28e38",
             success: function(result){
                 var restaurantSlug = result.objects[0].name.toLowerCase().replace(/[^A-Z0-9]/ig, "");
                 var menui = [];
                 $('<div class="three wide column"></div>').append
-                    ('<div class="ui card"><div class="content"><div class="header">'+result.objects[0].name+'</div><div class="description"><p>'+result.objects[0].phone+'</p><p>'+result.objects[0].street_address+'<br>'+result.objects[0].locality+','+result.objects[0].region+'<p><a class="menu'+[i]+'"><i class="newspaper icon"></i>Menu</a></p></div></div></div>')
+                    ('<div class="ui card"><div class="image"><img src="http://www.mokshaatl.com/image/slider/5.jpg"></div><div class="content"><div class="header">'+result.objects[0].name+'</div><div class="description"><p>'+result.objects[0].phone+'</p><p>'+result.objects[0].street_address+'<br>'+result.objects[0].locality+','+result.objects[0].region+'<p><a class="menu'+[i]+'"><i class="list icon"></i>Menu</a></p></div></div></div>')
                     .appendTo('#food');
-
 
 
                 $('.menu'+[i]).on('click', function(e){
@@ -43,7 +42,7 @@ $(document).ready(function(){
                         $('#menu').attr('class', 'ui modal ' + restaurantSlug);
                         $('#menu').html('');
                         $('#menu').modal('show', function(){
-                            $('<div class="content"><h1>'+result.objects[0].name+'</h1></div>').appendTo('#menu');
+                            $('<div class="content"><h1 class="ui blue header centered">'+result.objects[0].name+'</h1></div>').appendTo('#menu');
                             result.objects[0].menus.forEach(function(menu){
                                 menu.sections.forEach(function(section){
                                     var section_name = section.section_name.toLowerCase().replace(/[^A-Z0-9]/ig, "")
@@ -88,3 +87,10 @@ $(document).ready(function(){
 
 
 }); //jquery
+
+$('.dropdown')
+  .dropdown({
+    // you can use any ui transition
+    transition: 'drop'
+  })
+;

@@ -7,35 +7,28 @@
 <div class="ui grid centered">
 
   <div class="ui row">
-    <h1><i class="user icon"></i> <%= user.local.firstname %>'s Page</h1>
-    <a href="/profile" class="ui blue button"><i class="settings icon"></i>Settings</a>
-    <a href="/logout" class="ui red button"><i class="sign out icon"></i>Logout</a>
-
-    <h3>Welcome <b><span data-user-email="<%= user.local.email %>"><%= user.local.email %></span></b>, Here's your info</h3>
-    <h5>Address: <%= user.local.street1 %>,
-    <br><%= user.local.city %>, <%= user.local.zip %>, <%= user.local.state %>
-    <br> Phone Number: <%= user.local.phone %></h5>
-
-    <a href="#" id="order-food" class="ui button red massive">Get Food</a>
+    <a style="color:gray" href="#" id="order-food"><img src="/public/assets/order.png" alt="" />
+    <h4><i>Click Order Now to get your order</i></h4></a>
+    <!-- <a href="#" id="order-food" class="ui button red massive">Get Food</a> -->
 
   </div>
-
-
+  <hr>
+  <h1 class="ui header">Restaurants</h1>
   <div id="food" class="ui grid centered"></div>
 
 
 
 
-      
 
-      
+
+
 
   <div id="order" class="ui modal">
     <div class="content">
       <h1>Here is your Order!</h1>
       <a href="#" id="confirm" class="ui button blue massive">Bring it to me!</a>
     </div>
-  </div>  
+  </div>
 
   <div id="menu" class="ui modal"></div>
 
