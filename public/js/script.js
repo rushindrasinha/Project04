@@ -21,7 +21,7 @@ $(document).ready(function(){
 			.modal('show');
 	});
 
-	var restaurants = ['6e55d8e2c73ef1966b05','db7e7c1b6cadcb8b0ca2','40a636d23ea97f4d3745'];
+	var restaurants = ['03a922d427d0c42cc9ce','db7e7c1b6cadcb8b0ca2','40a636d23ea97f4d3745'];
 
 	$.each(restaurants, function(i){
 		$.ajax({
@@ -33,9 +33,8 @@ $(document).ready(function(){
 				var menui = [];
 				$('<div class="three wide column"></div>').append
 					('<div class="ui card"><div class="content"><div class="header">'+result.objects[0].name+'</div><div class="description"><p>'+result.objects[0].phone+'</p><p>'+result.objects[0].street_address+'<br>'+result.objects[0].locality+','+result.objects[0].region+'<p><a class="menu'+[i]+'"><i class="newspaper icon"></i>Menu</a></p></div></div></div>')
-					.appendTo('#food');
+					.appendTo('#food');	
 
-							
 
 				$('.menu'+[i]).on('click', function(e){
 					console.log(restaurantSlug);
@@ -43,7 +42,7 @@ $(document).ready(function(){
 						$('#menu').attr('class', 'ui modal ' + restaurantSlug);
 						$('#menu').html('');
 						$('#menu').modal('show', function(){
-							$('<div class="content"><h1>'+result.objects[0].name+'</h1></div>').appendTo('#menu');
+							$('<div class="content"><h1>'+result.objects[0].name+'</h1><input id="address" type="hidden" value="'+result.objects[0].street_address+'"><input id="locality" type="hidden" value="'+result.objects[0].locality+'"><input id="region" type="hidden" value="'+result.objects[0].region+'"><input id="postal_code" type="hidden" value="'+result.objects[0].postal_code+'"><input id="phone" type="hidden" value="'+result.objects[0].phone+'"></div>').appendTo('#menu');
 							result.objects[0].menus.forEach(function(menu){
 								menu.sections.forEach(function(section){
 									var section_name = section.section_name.toLowerCase().replace(/[^A-Z0-9]/ig, "")
@@ -72,14 +71,25 @@ $(document).ready(function(){
 	var addToOrder = function(){
 		$('.add-to-order').on('click', function(evt){
 			evt.preventDefault();
-			current_user_email = $('span').data('user-email');
-			item_to_order = ($(this).data());
-			console.log(item_to_order);
-			console.log(current_user_email);
+			itemToOrder = ($(this).data());
+			restaurantName = $('#menu h1').text();
+			restaurantAddress = $('input#address').val();
+			restaurantCity = $('input#locality').val();
+			restaurantState = $('input#region').val();
+			restaurantZip = $('input#postal_code').val();
+			restaurantPhone = $('input#phone').val();
 			$.ajax({
 				url: '/addtoorder',
 				method: "POST",
-				data: {item_to_order: item_to_order}
+				data: {
+					itemToOrder: itemToOrder,
+					restaurantName: restaurantName,
+					restaurantAddress: restaurantAddress,
+					restaurantCity: restaurantCity,
+					restaurantState: restaurantState,
+					restaurantZip: restaurantZip,
+					restaurantPhone: restaurantPhone
+				}
 			})
 		});	
 	} 
