@@ -21,7 +21,7 @@ $(document).ready(function(){
             .modal('show');
     });
 
-    var restaurants = ['6e55d8e2c73ef1966b05','db7e7c1b6cadcb8b0ca2','40a636d23ea97f4d3745','03a922d427d0c42cc9ce'];
+    var restaurants = ['db7e7c1b6cadcb8b0ca2','40a636d23ea97f4d3745','03a922d427d0c42cc9ce'];
 
     $.each(restaurants, function(i){
         $.ajax({
