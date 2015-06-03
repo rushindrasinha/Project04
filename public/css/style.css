@@ -78,3 +78,11 @@
     1px 0px 0px 0px rgba(0, 0, 0, 0.05) inset
   ;
 }
+
+a {
+  outline: none;
+}
+
+ul.ui.list li:before, .ui.bulleted.list .list > .item:before, .ui.bulleted.list > .item:before {
+    list-style-type: none !important;
+}
