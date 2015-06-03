@@ -1,4 +1,8 @@
 // app/routes.js
+
+
+var User            = require('../app/models/user');
+
 module.exports = function(app, passport) {
 
     // =====================================
@@ -70,6 +74,26 @@ module.exports = function(app, passport) {
     app.get('/logout', function(req, res) {
         req.logout();
         res.redirect('/');
+    });
+
+
+    app.post('/addtoorder', function(req, res){
+        console.log(req.body);
+        console.log(req.body.itemToOrder.orderName);
+        var restaurantName = req.body.restaurantName;
+        var restaurantAddress = req.body.restaurantAddress;
+        var restaurantCity = req.body.restaurantCity;
+        var restaurantState = req.body.restaurantState;
+        var restaurantZip = req.body.restaurantZip;
+        var restaurantPhone = req.body.restaurantPhone;
+        User.findByIdAndUpdate(
+            {_id: req.user.id},
+            {$push: {"orders": {restaurant: [restaurantName, restaurantPhone, restaurantAddress + ' ' + restaurantCity + ', ' + restaurantState + ' ' + restaurantZip], "order": [req.body.itemToOrder.orderName]}}},
+            {safe: true, upsert: true, new : true},
+            function(err, model) {
+                if(err){console.log(err)};
+            }
+        );
     });
 };
 

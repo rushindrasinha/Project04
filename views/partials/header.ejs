@@ -1,1 +1,51 @@
-<h3>header content</h3>
+<div class="ui menu">
+  <a href="/profile" class="active item">
+    <i class="home icon"></i> Home
+  </a>
+  <!-- <a class="item">
+    <i class="mail icon"></i> Messages
+  </a> -->
+  <a href="/profile" class="item">
+    <i class="user icon"></i> <%= user.local.firstname %>'s Page
+  </a>
+  <div class="ui dropdown item">
+    <i class="info icon"></i> <%= user.local.firstname %>'s Info <i class="dropdown icon"></i>
+    <div class="menu">
+      <p class="item">
+        <b>Address: </b> <i><%= user.local.street1 %>,
+        <br><%= user.local.city %>, <%= user.local.zip %>, <%= user.local.state %> </i>
+        <br> <b>Phone Number:</b> <i> <%= user.local.phone %> </i>
+      </p>
+    </div>
+  </div>
+  <!-- <div class="ui vertical menu">
+    <div class="ui dropdown item">
+      Categories
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <a class="item">Electronics</a>
+        <a class="item">Automotive</a>
+        <a class="item">Home</a>
+      </div>
+    </div>
+  </div> -->
+  <!-- <a href="#" class="item">
+    <i class="shipping icon"></i> Track Order
+  </a> -->
+  <div class="ui dropdown item">
+    <i class="shipping icon"></i> Track Order <i class="dropdown icon"></i>
+    <div class="menu">
+      <p class="item">
+        <a><img height="350" width="300" src="/public/assets/mapsample.png" alt="" /></a>
+      </p>
+    </div>
+  </div>
+  <div class="right menu">
+    <a href="/profile" class="item">
+      <i class="settings icon"></i> Settings
+    </a>
+    <a href="/logout" class="item">
+      <i class="sign out icon"></i> LogOut
+    </a>
+  </div>
+</div>

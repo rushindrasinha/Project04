@@ -2,169 +2,37 @@
 
 <% include ./partials/header %>
 
-<div class="ui stackable page grid centered">
+<input type="hidden" value="<%= user.local._id %>">
 
-    <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span><i class="user icon"></i> <%= user.local.firstname %>'s Page</h1>
-        <a href="/profile" class="ui blue button"><i class="settings icon"></i>Settings</a>
-        <a href="/logout" class="ui red button"><i class="sign out icon"></i>Logout</a>
-    </div>
+<div class="ui grid centered">
 
-    <div class="row">
+  <div class="ui row">
+    <a style="color:gray" href="#" id="order-food"><img src="/public/assets/order.png" alt="" />
+    <h4><i>Click Order Now to get your order</i></h4></a>
+    <!-- <a href="#" id="order-food" class="ui button red massive">Get Food</a> -->
 
-        <!-- LOCAL INFORMATION -->
-        <div class="col-sm-12 text-center">
-            <div class="well">
-                <h3><span class="fa fa-user"></span>Welcome <b><%= user.local.firstname %></b>, Here's your info</h3>
-                  <h5>Address: <%= user.local.street1 %>,
-                    <br><%= user.local.city %>, <%= user.local.zip %>, <%= user.local.state %>
-                    <br> Phone Number: <%= user.local.phone %></h5>
-
-                    <div class="ui stackable three column grid">
-<!-- Restaurant 1 Card Starts -->
-                  <div class="column">
-                    <div class="ui card">
-                      <div class="image">
-                        <img height="200" width="300" src="http://www.mcdonalds.co.uk/content/dam/McDonaldsUK/Promotions/Facebook-Share-Image.jpg">
-                      </div>
-                      <div class="content">
-                        <a id="restaurantsName" class="header restaurantsName"><b></b></a>
-                        <div class="meta">
-                          <span id="restaurantsNumber" class="date restaurantsNumber"><b></b></span>
-                        </div>
-                        <div id="restaurants" class="description restaurants"><b></b>
-                        </div>
-                      </div>
-                      <div class="extra content">
-                        <a class="menu">
-                          <i class="newspaper icon"></i>
-                          Menu
-                        </a>
-                      </div>
-                      <div class="extra content">
-                        <a>
-                          <i class="edit icon"></i>
-                          Edit Selected Order
-                        </a>
-                      </div>
-                      <div class="extra content">
-
-                      </div>
-                      <div class="content">
-                        <a class="header"><b>Your Orders</b></a>
-                        <div class="meta">
-                          <span class="date"><b>These are your selected orders from '<span class="restaurantsName"></span>'</b></span>
-                        </div>
-                        <div class="description"><b>McChicken Meal Large</b>
-                        </div>
-                        <div class="description"><b>BigMac Meal Large</b>
-                        </div>
-                        <div class="description"><b>Cheeseburger Meal with Choco Shake</b>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-<!-- Restaurant 1 Card Ends -->
-
-<!-- Restaurant 2 Card Starts -->
-<div class="column">
-                    <div class="ui card">
-                      <div class="image">
-                        <img height="200" width="300" src="http://veggiesetgo.com/wp-content/uploads/2014/09/pinches-tacos24.png">
-                      </div>
-                      <div class="content">
-                        <a class="header 2restaurantsName"><b></b></a>
-                        <div class="meta">
-                          <span class="date 2restaurantsNumber"><b></b></span>
-                        </div>
-                        <div class="description 2restaurants"><b></b>
-                        </div>
-                      </div>
-                      <div class="extra content">
-                        <a class="menu">
-                          <i class="newspaper icon"></i>
-                          Menu
-                        </a>
-                      </div>
-                      <div class="extra content">
-                        <a>
-                          <i class="edit icon"></i>
-                          Edit Selected Order
-                        </a>
-                      </div>
-                      <div class="content">
-                        <a class="header"><b>Your Orders</b></a>
-                        <div class="meta">
-                          <span class="date"><b>These are your selected orders from '<span class="2restaurantsName"></span>'</b></span>
-                        </div>
-                        <div class="description"><b>McChicken Meal Large</b>
-                        </div>
-                        <div class="description"><b>BigMac Meal Large</b>
-                        </div>
-                        <div class="description"><b>Cheeseburger Meal with Choco Shake</b>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-<!-- Restaurant 2 Card Ends -->
-
-<!-- Restaurant 3 Card Starts -->
-<div class="column">
-                    <div class="ui card">
-                      <div class="image">
-                        <img height="200" width="300" src="http://www.burgerlounge.com/images/kensington-locale.jpg">
-                      </div>
-                      <div class="content">
-                        <a class="header 1restaurantsName"><b></b></a>
-                        <div class="meta">
-                          <span class="date 1restaurantsNumber"><b></b></span>
-                        </div>
-                        <div class="description 1restaurants"><b></b>
-                        </div>
-                      </div>
-                      <div class="extra content">
-                        <a class="menu">
-                          <i class="newspaper icon"></i>
-                          Menu
-                        </a>
-                      </div>
-                      <div class="extra content">
-                        <a>
-                          <i class="edit icon"></i>
-                          Edit Selected Order
-                        </a>
-                      </div>
-                      <div class="content">
-                        <a class="header"><b>Your Orders</b></a>
-                        <div class="meta">
-                          <span class="date"><b>These are your selected orders from '<span class="1restaurantsName"></span>'</b></span>
-                        </div>
-                        <div class="description"><b>McChicken Meal Large</b>
-                        </div>
-                        <div class="description"><b>BigMac Meal Large</b>
-                        </div>
-                        <div class="description"><b>Cheeseburger Meal with Choco Shake</b>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-<!-- Restaurant 3 Card Ends -->
   </div>
-            </div>
-        </div>
-
-    </div>
-
-</div><!-- .container -->
+  <hr>
+  <h1 class="ui header">Restaurants</h1>
+  <div id="food" class="ui grid centered"></div>
 
 
-<div id="menu" class="ui modal">
-  <div class="content">
-    <div class="ui grid">
 
+
+
+
+
+
+  <div id="order" class="ui modal">
+    <div class="content">
+      <h1>Here is your Order!</h1>
+      <a href="#" id="confirm" class="ui button blue massive">Bring it to me!</a>
     </div>
   </div>
-</div>
+
+  <div id="menu" class="ui modal"></div>
+
+</div><!-- grid -->
 
 
 <% include ./partials/footer %>
