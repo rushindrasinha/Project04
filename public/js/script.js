@@ -16,9 +16,7 @@ $(document).ready(function(){
 
 
 
-    var restaurants = ['db7e7c1b6cadcb8b0ca2','40a636d23ea97f4d3745','03a922d427d0c42cc9ce'];
-
-    //, 'cc5eee16e45ed4a82840', '6e55d8e2c73ef1966b05', '0f067e6bb632302a1a7a', '085702d8868fa14b83d6', '3b07a76df3ab395e758a', 'fe8d1642fb631fe24697', '928f3bba275390ea8c74'
+    var restaurants = ['db7e7c1b6cadcb8b0ca2','40a636d23ea97f4d3745','03a922d427d0c42cc9ce', 'cc5eee16e45ed4a82840', '6e55d8e2c73ef1966b05', '0f067e6bb632302a1a7a', '085702d8868fa14b83d6', '3b07a76df3ab395e758a', 'fe8d1642fb631fe24697', '928f3bba275390ea8c74'];
 
     $.each(restaurants, function(i){
         $.ajax({
@@ -97,6 +95,13 @@ $(document).ready(function(){
 	$('.order.modal').modal({
 		allowMultiple: false
 	});
+
+  // $('#order-food').on('click', function(e){
+  //     e.preventDefault();
+  //     $('#order')
+  //         .modal('setting', 'transition', 'horizontal flip')
+  //         .modal('show');
+  // });
 
 	$('#order-food').on('click', function(e){
 	    e.preventDefault();
