@@ -2,7 +2,7 @@
 
 <% include ./partials/header %>
 
-<input type="hidden" value="<%= user.local._id %>">
+<input id="current_user" type="hidden" value="<%= user.local._id %>">
 
 <div class="ui grid centered">
 
@@ -16,21 +16,31 @@
   <h1 class="ui header">Restaurants</h1>
   <div id="food" class="ui grid centered"></div>
 
-
-
-
-
-
-
-
-  <div id="order" class="ui modal">
+  <div id="confirm-order" class="ui modal small">
     <div class="content">
-      <h1>Here is your Order!</h1>
-      <a href="#" id="confirm" class="ui button blue massive">Bring it to me!</a>
+    <i class="close icon"></i>
+      <h1>It's on the way!</h1>
+      <p>Your Order is currently <span class="status"></span></p>
+      <!-- <a href="#" id="confirm-purchase" class="ui button blue massive">Bring it to me!</a> -->
     </div>
   </div>
 
   <div id="menu" class="ui modal"></div>
+  
+
+  <div id="quote" class="ui order modal small">
+     <div class="content">
+      <h1><%= user.orders[0].order[0] %></h1>
+      <p class="quote"></p>
+      <div id="order-details" data-order-details="<%= user.orders[0].restaurant[2] %>" style="display:none;"></div>
+      <div id="user-details" data-order-details="<%= user.local.address %>" style="display:none;"></div>
+      <a href="#" id="confirm" class="ui button blue massive">Bring it</a>
+    </div>
+  </div>
+
+
+
+
 
 </div><!-- grid -->
 

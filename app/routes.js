@@ -2,6 +2,8 @@
 
 
 var User            = require('../app/models/user');
+var request         = require('request');
+
 
 module.exports = function(app, passport) {
 
@@ -95,7 +97,60 @@ module.exports = function(app, passport) {
             }
         );
     });
+
+    //GET QUOTE
+    app.post('/getquote', function(req, res){
+        console.log(req.user.id);
+        var options = {
+            method: 'POST',
+            url: 'https://api.postmates.com/v1/customers/cus_KKs1v70QzqvkeV/delivery_quotes',
+            headers: {
+                'Authorization': 'Basic MTMwYzk1MjktNzE5My00MGNhLWJhZGEtM2RiNmQxYTU5YWJmOg=='
+            },
+            form: {
+                pickup_address: req.body.pickup_address,
+                dropoff_address: req.body.dropoff_address
+            }
+        };
+        request(options, function(err, response, body){
+            res.send(body);
+            console.log(body);
+        });
+    });
+
+
+     //CONFIRM ORDER
+     app.post('/confirmorder', function(req, res){
+        console.log(req.user_id)
+
+        var options = {
+            method: 'POST',
+            url: 'https://api.postmates.com/v1/customers/cus_KKs1v70QzqvkeV/deliveries',
+            headers: {
+                'Authorization': 'Basic MTMwYzk1MjktNzE5My00MGNhLWJhZGEtM2RiNmQxYTU5YWJmOg=='
+            },
+            form: {
+                manifest: 'Team Lunch',
+                pickup_address: req.body.pickup_address,
+                pickup_phone_number: '555-867-5309',
+                pickup_name: 'Tendergreens',
+                dropoff_address: req.body.dropoff_address,
+                dropoff_name: 'Dan',
+                dropoff_phone_number: '555-867-5309'
+            }
+        }
+
+        request(options, function(err, response, body){
+            res.send(body)
+        })
+     });
+
+
+
 };
+
+
+
 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
