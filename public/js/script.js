@@ -14,12 +14,6 @@ $(document).ready(function(){
             .modal('show');
     });
 
-    $('#order-food').on('click', function(e){
-        e.preventDefault();
-        $('#order')
-            .modal('setting', 'transition', 'horizontal flip')
-            .modal('show');
-    });
 
 
     var restaurants = ['db7e7c1b6cadcb8b0ca2','40a636d23ea97f4d3745','03a922d427d0c42cc9ce'];
@@ -68,13 +62,14 @@ $(document).ready(function(){
         });//ajax
     });//each
 
-
+//private repo test
 
 	//ADD ORDER TO CURRENT USER
 	var addToOrder = function(){
 		$('.add-to-order').on('click', function(evt){
 			evt.preventDefault();
 			itemToOrder = ($(this).data());
+			item_price = ($('span#item-price').data());
 			restaurantName = $('#menu h1').text();
 			restaurantAddress = $('input#address').val();
 			restaurantCity = $('input#locality').val();
@@ -86,6 +81,7 @@ $(document).ready(function(){
 				method: "POST",
 				data: {
 					itemToOrder: itemToOrder,
+					item_price: item_price,
 					restaurantName: restaurantName,
 					restaurantAddress: restaurantAddress,
 					restaurantCity: restaurantCity,
@@ -97,9 +93,62 @@ $(document).ready(function(){
 		});
 	}
 
-  $('.dropdown')
-    .dropdown({
-      transition: 'drop'
-    });
+	//GET QUOTE
+	$('.order.modal').modal({
+		allowMultiple: false
+	});
+
+	$('#order-food').on('click', function(e){
+	    e.preventDefault();
+	    restaurant = $('#order-details').data().orderDetails;
+	    user_address = $('#order-details').data().orderDetails;
+	    $.ajax({
+	    	url: '/getquote',
+	    	method: 'POST',
+	    	data: {
+	    		pickup_address: restaurant,
+	    		dropoff_address: user_address
+	    	},
+	    	success: function(result){
+	    		result = JSON.parse(result);
+	    		$('p.quote').text('Your delivery fee is $'+ parseInt((result.fee)/100).toFixed(2));
+	    	}
+	    });
+	    $('#quote')
+	        .modal('show');
+	});
+
+
+	$('#confirm').on('click', function(e){
+		e.preventDefault();
+		$.ajax({
+			url: '/confirmorder',
+			method: 'POST',
+			data: {
+                manifest: 'Team Lunch',
+                pickup_address: restaurant,
+                pickup_phone_number: '555-867-5309',
+                pickup_name: 'Tendergreens',
+                dropoff_address: user_address,
+                dropoff_name: 'Dan',
+                dropoff_phone_number: '555-867-5309'
+            },
+			success: function(result){
+				result = JSON.parse(result);
+				console.log(result);
+				$('#confirm-order .content span.status').text(result.status);
+			}
+		});
+	});
+
+
+	$('#confirm-order')
+		.modal('attach events', '#confirm')
+
+
+	$('.dropdown')
+		.dropdown({
+		transition: 'drop'
+	});
 
 }); //jquery
