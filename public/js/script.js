@@ -30,7 +30,7 @@ $(document).ready(function(){
         $.ajax({
             type: 'GET',
             dataType: "jsonp",
-            url: "https://api.locu.com/v1_0/venue/" + restaurants[i] + "/?api_key=b86b056f3e195b5ef802fa51fccc0e896ca44919",
+            url: "https://api.locu.com/v1_0/venue/" + restaurants[i] + "/?api_key=f165c0e560d0700288c2f70cf6b26e0c2de0348f",
             success: function(result){
                 var restaurantSlug = result.objects[0].name.toLowerCase().replace(/[^A-Z0-9]/ig, "");
                 var menui = [];
