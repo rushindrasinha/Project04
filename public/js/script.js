@@ -21,13 +21,16 @@ $(document).ready(function(){
             .modal('show');
     });
 
+
     var restaurants = ['db7e7c1b6cadcb8b0ca2','40a636d23ea97f4d3745','03a922d427d0c42cc9ce'];
+
+    //, 'cc5eee16e45ed4a82840', '6e55d8e2c73ef1966b05', '0f067e6bb632302a1a7a', '085702d8868fa14b83d6', '3b07a76df3ab395e758a', 'fe8d1642fb631fe24697', '928f3bba275390ea8c74'
 
     $.each(restaurants, function(i){
         $.ajax({
             type: 'GET',
             dataType: "jsonp",
-            url: "https://api.locu.com/v1_0/venue/" + restaurants[i] + "/?api_key=e24ffeac95907824f1503d2a97cb39d5c9e28e38",
+            url: "https://api.locu.com/v1_0/venue/" + restaurants[i] + "/?api_key=b86b056f3e195b5ef802fa51fccc0e896ca44919",
             success: function(result){
                 var restaurantSlug = result.objects[0].name.toLowerCase().replace(/[^A-Z0-9]/ig, "");
                 var menui = [];
@@ -46,9 +49,9 @@ $(document).ready(function(){
                             result.objects[0].menus.forEach(function(menu){
                                 menu.sections.forEach(function(section){
                                     var section_name = section.section_name.toLowerCase().replace(/[^A-Z0-9]/ig, "")
-                                    $('<ul class="ui list"></ul>').append('<li class="item '+section_name+'"><h2 class="ui red header">'+section.section_name+'</h2><ul></ul></li>').appendTo('#menu .content');
+                                    $('<ul class="ui list"></ul>').append('<div class="ui center aligned segment"><li class="item '+section_name+'"><h2 class="ui red header centered">'+section.section_name+'</h2><ul></ul></li>').appendTo('#menu .content');
                                     section.subsections[0].contents.forEach(function(item) {
-                                        $('<li></li>').append(item.name + ' ' + item.price + '<a data-order-name="'+item.name+'" class="ui button mini add-to-order"><i class="icon plus"></i> add</a>').appendTo('#menu .content ul li.'+section_name+' ul');
+                                        $('<li></li>').append('<b>' + item.name + '</b>   ..........     <i class="dollar icon"></i>' + item.price + '     <a data-order-name="'+item.name+'" class="ui black basic button add-to-order"><i class="icon plus"></i> Add</div></a>').appendTo('#menu .content ul li.'+section_name+' ul');
                                     });
 
                                 });

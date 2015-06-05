@@ -81,8 +81,28 @@
 
 a {
   outline: none;
+  color: black;
+}
+
+a:hover {
+  color: gray;
 }
 
 ul.ui.list li:before, .ui.bulleted.list .list > .item:before, .ui.bulleted.list > .item:before {
     list-style-type: none !important;
+    content: none;
+}
+
+.left {
+  float: left;
+}
+
+
+.centeralign {
+  text-align: center;
+}
+
+
+.ui.list .item a:hover {
+  color: black;
 }

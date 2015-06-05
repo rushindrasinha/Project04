@@ -7,15 +7,15 @@
 <div class="ui grid centered">
 
   <div class="ui row">
-    <a style="color:gray" href="#" id="order-food"><img src="/public/assets/order.png" alt="" />
+    <a style="color:gray" href="#" id="order-food"><img height="250" src="/public/assets/order.png" alt="" />
     <h4><i>Click Order Now to get your order</i></h4></a>
     <!-- <a href="#" id="order-food" class="ui button red massive">Get Food</a> -->
-
   </div>
+  <!-- <a style="color:gray" href="#" id="order-food"><img src="/public/assets/rest.png" alt="" />
+  <h4><i>Click Here To Pick A Restaurant</i></h4></a> -->
   <hr>
-  <h1 class="ui header">Restaurants</h1>
+  <h1></h1>
   <div id="food" class="ui grid centered"></div>
-
 
 
 
@@ -25,15 +25,35 @@
 
   <div id="order" class="ui modal">
     <div class="content">
-      <h1>Here is your Order!</h1>
-      <a href="#" id="confirm" class="ui button blue massive">Bring it to me!</a>
+      <h1 class="ui black header centered">Pay Now To Get Your Order!</h1>
+      <div class="actions">
+      <!-- <a href="#" id="closemodal" class="ui button">Close</a> -->
+      <div class="left">
+          <form action="/charge" method="POST">
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="pk_test_uUdJS0pJkGQ4qbu9ieqYx3d8"
+                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                    data-name="Order Now"
+                    data-amount=2000
+                    data-description="Place your order now"
+                    data-bitcoin=true
+                    data-label="Order Now">
+            </script>
+          </form>
+        </div>
+          <div class="ui red button">
+            Cancel
+          </div>
+
+      </div>
+
+      <!-- <a href="#" id="confirm" class="ui button blue massive">Bring it to me!</a> -->
     </div>
   </div>
 
   <div id="menu" class="ui modal"></div>
 
 </div><!-- grid -->
-
 
 <% include ./partials/footer %>
 

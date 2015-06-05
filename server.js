@@ -15,6 +15,7 @@ var bodyParser   = require('body-parser');
 var session      = require('express-session');
 
 var configDB = require('./config/database.js');
+var stripe = require('stripe')('sk_test_Hyqjwh33yB8LVxIrYoLWtBLY');
 
 // configuration ===============================================================
 mongoose.connect(configDB.url); // connect to our database
@@ -41,3 +42,28 @@ require('./app/routes.js')(app, passport); // load our routes and pass in our ap
 // launch ======================================================================
 app.listen(port);
 console.log('The magic happens on port ' + port);
+
+// Stripe Payments
+app.post('/charge', function(req, res) {
+    var stripeToken = req.body.stripeToken;
+    // var amount = idk;
+
+    stripe.charges.create({
+        source: stripeToken,
+        currency: 'usd',
+        amount: 2000,
+        description: "Bite Me Order"
+    },
+    function(err, charge) {
+        if (err) {
+            console.log(err);
+            res.send(500, err);
+        } else {
+            console.log(err);
+            res.send(204);
+        }
+    });
+});
+
+app.use(express.static(__dirname));
+app.listen(process.env.PORT || 3000);

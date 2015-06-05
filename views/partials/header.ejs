@@ -18,6 +18,31 @@
       </p>
     </div>
   </div>
+  <div class="ui dropdown item">
+    <i class="food icon"></i> Current Order <i class="dropdown icon"></i>
+    <div class="menu">
+      <p class="item">
+        <b>Restaurant: </b><i><%= user.orders[15].restaurant %></i>
+      </p>
+      <p class="item">
+        <b> Orders: </b>
+          <% for(var i = 18; i < user.orders.length; i++) {%>
+            <li class="item"><%= user.orders[i].order %></li>
+          <% } %>
+      </p>
+
+        <!-- <%= user.orders[15].restaurant %>
+        <br>
+        <b>Items: </b><br>
+          <%= user.orders[22].order %><br>
+          <%= user.orders[15].order %><br>
+          <%= user.orders[21].order %> -->
+        <!-- <br><%= user.local.city %>, <%= user.local.zip %>, <%= user.local.state %> </i>
+        <br> <b>Phone Number:</b> <i> <%= user.local.phone %> </i> -->
+      </p>
+    </div>
+  </div>
+
   <!-- <div class="ui vertical menu">
     <div class="ui dropdown item">
       Categories
