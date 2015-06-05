@@ -1,5 +1,5 @@
 // server.js
-// 
+//
 // set up ======================================================================
 // get all the tools we need
 var express  = require('express');
@@ -66,4 +66,4 @@ app.post('/charge', function(req, res) {
 });
 
 app.use(express.static(__dirname));
-app.listen(process.env.PORT || 3000);
+// app.listen(process.env.PORT || 3000);
